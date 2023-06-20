@@ -30,7 +30,7 @@ PaillierSolidity deployed to: 0x5FbDB2315678afecb367f032d93F642f64180aa3
 ## Running Unit Tests
 There are two tests for both of the functions in the `PaillierSolidity` contract: `addEncSum` and `encZero`.
 
-To run these tests enter the command:
+To run these tests, enter the command:
 `npx hardhat test`
 
 You should see an output like this if both tests passed:
