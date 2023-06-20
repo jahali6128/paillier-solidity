@@ -1,0 +1,9 @@
+node_modules
+
+# Hardhat files
+cache
+artifacts
+
+# Python venv
+venv_paillier
+
