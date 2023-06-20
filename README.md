@@ -5,7 +5,7 @@ A PoC to demonstrate homomorphic addition of two ciphertexts using the [Paillier
 By default, Solidity is unable to perform certain cryptographic operations due to the restrictions on the size of some of its data types. With the use of the [solidity-BigNumber](https://github.com/firoorg/solidity-BigNumber) library, we can bypass these restrictions and finally perform cryptography from within a smart contract.
 
 ## Prerequisites
-`Node.js  >=16.0` - required for Hardhat
+`Node.js >= 16.0` - required for Hardhat
 
 ## Installation
 Clone the repo:
