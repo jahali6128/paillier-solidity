@@ -15,18 +15,15 @@ describe("PaillierSolidity.sol", function() {
 
     // enc_a
     const enc_a = ethers.toBeHex(publicKey.encrypt(a));
-    const enc_a_bitlength = enc_a.toString(16).length * 4;
-    // console.log("enc_a: %s\nenc_a_bitlength: %s\n", enc_a, enc_a_bitlength);
+    // console.log("enc_a: %s, enc_a );
 
     // enc_b
     const enc_b = ethers.toBeHex(publicKey.encrypt(b));
-    const enc_b_bitlength = enc_a.toString(16).length * 4;
-    // console.log("enc_b: %s\nenc_b_bitlength: %s\n", enc_b, enc_b_bitlength);
+    // console.log("enc_b: %s,enc_b);
 
     // Public key
     const pub_n = ethers.toBeHex(publicKey.n);
-    const pub_n_bitlength = pub_n.toString(16).length * 4;
-    // console.log("pub_n: %s\npub_n_bitlength: %s\n", pub_n, pub_n_bitlength);
+    // console.log("pub_n: %s, pub_n);
 
     // bit length will differ to what has been stated in this script.
     // if using 256-bit key, bit_length will be 264 as "0x" prefix may have been factored in  
@@ -36,9 +33,7 @@ describe("PaillierSolidity.sol", function() {
     const [owner] = await ethers.getSigners();
     const paillierSolidity = await ethers.deployContract("PaillierSolidity");
     
-    const enc_sum = await paillierSolidity.addEncSum(enc_a, enc_a_bitlength, 
-                                                        enc_b, enc_b_bitlength,
-                                                        pub_n, pub_n_bitlength);
+    const enc_sum = await paillierSolidity.addEncSum(enc_a, enc_b, pub_n);
     
     // Will return tuple so get first index
     const enc_sum_int = bigintConversion.hexToBigint(enc_sum[0]);
@@ -63,16 +58,13 @@ describe("PaillierSolidity.sol", function() {
 
         // Arbitary random number - 10000
         const rand = ethers.toBeHex(Math.floor(Math.random() * 10000));
-        const rand_bitlength = rand.toString(16).length * 4;
 
         // Public key
         const pub_n = ethers.toBeHex(publicKey.n);
-        const pub_n_bitlength = pub_n.toString(16).length * 4;
-        // console.log("pub_n: %s\npub_n_bitlength: %s\n", pub_n, pub_n_bitlength);
+        // console.log("pub_n: %s, pub_n);
 
         
-        const enc_zero = await paillierSolidity.encZero(rand, rand_bitlength, 
-                                                        pub_n, pub_n_bitlength);
+        const enc_zero = await paillierSolidity.encZero(rand, pub_n);
 
         // Will return tuple so get first index
         const enc_zero_int = bigintConversion.hexToBigint(enc_zero[0]);
